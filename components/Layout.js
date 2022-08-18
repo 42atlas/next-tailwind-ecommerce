@@ -43,7 +43,7 @@ export default function Layout({ title, children }) {
         <header>
           <nav className='flex h-12 justify-between items-center shadow-md px-4'>
             <Link href='/'>
-              <a className='text-lg font-bold'>Raffaelli</a>
+              <a className='text-lg font-bold'>Raffaelli Shop</a>
             </Link>
             <div>
               <Link href='/cart'>
