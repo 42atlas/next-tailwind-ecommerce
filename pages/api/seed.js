@@ -1,5 +1,5 @@
-import Product from '../../models/Products'
-import User from '../../models/Users'
+import Product from '../../models/Product'
+import User from '../../models/User'
 import data from '../../utils/data'
 import db from '../../utils/db'
 

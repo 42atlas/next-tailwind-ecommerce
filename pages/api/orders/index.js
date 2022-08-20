@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react'
-import Order from '../../../models/Orders'
+import Order from '../../../models/Order'
 import db from '../../../utils/db'
 
 const handler = async (req, res) => {
@@ -18,5 +18,4 @@ const handler = async (req, res) => {
   const order = await newOrder.save()
   res.status(201).send(order)
 }
-
 export default handler

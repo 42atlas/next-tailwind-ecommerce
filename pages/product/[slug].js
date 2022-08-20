@@ -1,21 +1,20 @@
-import React, { useContext } from 'react'
-import Layout from '../../components/Layout'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Store } from '../../utils/Store'
-import Product from '../../models/Products'
-import db from '../../utils/db'
 import axios from 'axios'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
+import Layout from '../../components/Layout'
+import Product from '../../models/Product'
+import db from '../../utils/db'
+import { Store } from '../../utils/Store'
 
 export default function ProductScreen(props) {
   const { product } = props
   const { state, dispatch } = useContext(Store)
   const router = useRouter()
-
   if (!product) {
-    return <Layout title='Product Not Found'>Product Not Found</Layout>
+    return <Layout title='Produt Not Found'>Produt Not Found</Layout>
   }
 
   const addToCartHandler = async () => {
@@ -24,8 +23,9 @@ export default function ProductScreen(props) {
     const { data } = await axios.get(`/api/products/${product._id}`)
 
     if (data.countInStock < quantity) {
-      return toast.error('Sorry, Product is out of stock')
+      return toast.error('Sorry. Product is out of stock')
     }
+
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
     router.push('/cart')
   }
@@ -65,8 +65,8 @@ export default function ProductScreen(props) {
               <div>€{product.price}</div>
             </div>
             <div className='mb-2 flex justify-between'>
-              <div> Status </div>
-              <div>{product.countInStock > 0 ? 'In Stock' : 'Unavailable'}</div>
+              <div>Status</div>
+              <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
             </div>
             <button
               className='primary-button w-full'

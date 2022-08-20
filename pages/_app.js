@@ -1,6 +1,6 @@
 import '../styles/globals.css'
-import { StoreProvider } from '../utils/Store'
 import { SessionProvider, useSession } from 'next-auth/react'
+import { StoreProvider } from '../utils/Store'
 import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
@@ -30,6 +30,7 @@ function Auth({ children }) {
   if (status === 'loading') {
     return <div>Loading...</div>
   }
+
   return children
 }
 
